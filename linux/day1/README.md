@@ -5,3 +5,11 @@
 
 <img src="ping1.png">
 
+## Understanding REmote control protocols 
+
+<img src="remote1.png">
+
+### understanding RDP 
+
+<img src="rdp1.png">
+

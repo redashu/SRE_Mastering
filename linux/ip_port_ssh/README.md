@@ -50,3 +50,60 @@ baby     pts/1    192.168.1.4      00:58    0.00s  0.22s  0.04s sshd: baby [priv
 ritik    pts/2    192.168.1.12     01:01   38.00s  0.08s  0.08s -bash
 
 ```
+
+### Understanding ssh key pairs 
+
+<img src="pair1.png">
+
+### generating ssh key pairs 
+
+```
+root@sre-vm:~# ssh-keygen  
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/id_rsa
+Your public key has been saved in /root/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:jIXd3P0Lz9qSmXFZQsRuuuUpms7eriLU5AsNSFaupZU root@sre-vm
+The key's randomart image is:
++---[RSA 3072]----+
+
+```
+
+### where private and public is getting stored in client mahcine 
+
+- ssh keys always store in users home directory 
+- example if user name is harry then -- Privatge /home/harry/.ssh/id_rsa & public key /home/harry/.ssh/id_rsa.pub
+
+## Note: root user has home directory as /root/.ssh/{id_rsa,id_rsa.pub} 
+
+## to transfer public key from client machine to server User we can use 
+
+```
+ssh-copy-id    azureuser@51.8.104.46
+```
+
+### understanding 
+
+<img src="key1.png">
+
+### understanding and using scp 
+
+```
+ 62  scp  a.txt   azureuser@51.8.104.46:/home/azureuser/
+   63  mkdir hello
+   64  cp a.txt  hello/
+   65  scp  hello   azureuser@51.8.104.46:/home/azureuser/
+   66  scp -r  hello   azureuser@51.8.104.46:/home/azureuser/
+   67  ls
+   68  rm -rf a.txt hello/
+   69  ls
+   70  scp  azureuser@51.8.104.46:/home/azureuser/a.txt   . 
+   71  ls
+   72  scp -r  azureuser@51.8.104.46:/home/azureuser/hello   . 
+```
+
+## Note: 
+- if client machine is having windows there is a GUI software called winscp 

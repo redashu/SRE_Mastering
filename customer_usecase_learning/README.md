@@ -210,3 +210,7 @@ cat  /etc/hosts
 
 ```
 
+## team work virtual hosting / shared hosting 
+
+<img src="shd.png">
+
